@@ -11,11 +11,11 @@ const PGPORT = process.env.PGPORT || 5432;
 const DROPDB = process.env.DROPDB;
 
 module.exports = {
-    PORT,
-    PGUSER,
-    PGHOST,
-    PGDATABASE,
-    PGPASSWORD,
-    PGPORT,
-    DROPDB,
-}
+	PORT,
+	PGUSER,
+	PGHOST,
+	PGDATABASE,
+	PGPASSWORD,
+	PGPORT,
+	DROPDB,
+};
