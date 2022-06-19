@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css?family=Nunito:400,700|Roboto:400,700&display=swap');
+
+:root {
+	--font: 'Roboto', sans-serif;
+	--font-title: 'Nunito', sans-serif;
+
+	--font-color: #3d3a41;
+	--font-color-disabled: #aa5f6e;
+	--font-color-white-1: #ffe4d6;
+	--font-color-white-2: #ffdac7;
+	--font-color-white-3: #f2c0a7;
+	--font-color-light: #ffad99;
+	--font-color-dark: #716c89;
+
+	--border-radius-default: 5px;
+	--border-size: 1px;
+}

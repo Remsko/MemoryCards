@@ -1,0 +1,4 @@
+.CardForm {
+	display: flex;
+	flex-direction: column;
+}
