@@ -59,14 +59,14 @@ const readCards = async (req, res, next) => {
 };
 
 const readCardsByDeckId = async (req, res, next) => {
-	const deckId = req.body;
+	const { id } = req.params;
 	try {
-		const cards = await cards.selectCardsByDeckId({
-			deckId,
+		const result = await cards.selectCardsByDeckId({
+			deckId: id,
 		});
 		res.status(200);
 		req.results = req.results || {};
-		req.results.cards = cards;
+		req.results.cards = result;
 		next();
 	} catch (dbError) {
 		console.error(dbError);

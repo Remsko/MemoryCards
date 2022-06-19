@@ -23,6 +23,10 @@ const createRoutes = () => {
 			controllers.decks.readDecks,
 			format.sendJSON,
 		]),
+		readDeck: createRouter([
+			controllers.decks.readDeck,
+			format.sendJSON,
+		]),
 		updateDeck: createRouter([
 			controllers.decks.updateDeck,
 			format.sendJSON,
@@ -37,6 +41,10 @@ const createRoutes = () => {
 		]),
 		readCards: createRouter([
 			controllers.cards.readCards,
+			format.sendJSON,
+		]),
+		readCardsByDeckId: createRouter([
+			controllers.cards.readCardsByDeckId,
 			format.sendJSON,
 		]),
 		updateCard: createRouter([
@@ -61,11 +69,13 @@ const addRoutes = (app) => {
 
 	app.post('/decks', routes.createDeck);
 	app.get('/decks', routes.readDecks);
+	app.get('/decks/:id', routes.readDeck);
 	app.patch('/decks', routes.updateDeck);
 	app.delete('/decks', routes.deleteDeck);
 
 	app.post('/cards', routes.createCard);
 	app.get('/cards', routes.readCards);
+	app.get('/cards/:id', routes.readCardsByDeckId);
 	app.patch('/cards', routes.updateCard);
 	app.delete('/cards', routes.deleteCard);
 

@@ -8,15 +8,13 @@ const selectCards = async () => {
 	return result.rows;
 };
 
-const selectCardsByDeckId = async () => {
+const selectCardsByDeckId = async ({ deckId }) => {
 	const result = await db.query(
 		'SELECT * FROM cards WHERE deck_id = $1',
 		[deckId]
 	);
 
-	if (result.rowCount) {
-		return result.rows[0];
-	}
+	return result.rows;
 };
 
 const selectCardById = async ({ cardId }) => {

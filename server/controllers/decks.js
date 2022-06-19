@@ -44,6 +44,33 @@ const readDecks = async (req, res, next) => {
 	}
 };
 
+const readDeck = async (req, res, next) => {
+	const { id } = req.params;
+	try {
+		const result =
+			(await decks.selectDeckByName({
+				deckname: id,
+			})) ||
+			(await decks.selectDeckById({
+				deckId: parseInt(id),
+			}));
+		if (!result) {
+			const error = new Error('Deck not found');
+			error.status = 404;
+			return next(error);
+		}
+		res.status(200);
+		req.results = req.results || {};
+		req.results.deck = result;
+		next();
+	} catch (dbError) {
+		console.error(dbError);
+		const error = new Error("Couldn't find deck");
+		error.status = 500;
+		next(error);
+	}
+};
+
 const updateDeck = async (req, res, next) => {
 	const { deckId } = req.body;
 	try {
@@ -96,6 +123,7 @@ const deleteDeck = async (req, res, next) => {
 };
 
 module.exports = {
+	readDeck,
 	createDeck,
 	readDecks,
 	updateDeck,
