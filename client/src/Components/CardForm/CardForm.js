@@ -15,6 +15,7 @@ const CardForm = ({ deckId }) => {
 		);
 
 		console.log(data);
+		alert('It worked');
 	};
 
 	const handleFrontChange = (e) => {
@@ -30,6 +31,8 @@ const CardForm = ({ deckId }) => {
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		createCard();
+		setFront('');
+		setBack('');
 	};
 
 	return (

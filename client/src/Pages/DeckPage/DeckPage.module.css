@@ -1,15 +1,78 @@
 @import '../../styles/variables.css';
 
+.DeckPage {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	min-height: 100vh;
+}
+
 .DecksContainer {
-	background: var(--font-color-white-2);
+	background-color: var(--font-color-white-2);
+	width: 24rem;
 	border-radius: 0 var(--border-radius-default) 0
 		var(--border-radius-default);
-	width: 24rem;
-	min-height: 20rem;
-	max-height: 90vh;
-	padding: 2.8rem;
-	box-shadow: 0px 10px 25px 2px rgba(0, 0, 0, 0.12);
 	border-top: 5px solid #f2c0a7;
 	border-bottom: 5px solid #716c89;
+	box-shadow: 0px 10px 25px 2px rgba(0, 0, 0, 0.12);
+}
+
+/* .DeckTitle {
+	text-align: center;
+	font-weight: bold;
+	font-family: var(--font-title);
+	color: var(--font-color);
+	font-size: 2rem;
+	margin-bottom: 2rem;
+} */
+
+.DeckList {
+	max-height: 65vh;
 	overflow: auto;
+}
+
+.DeckDummy {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	background-color: var(--font-color-white-1);
+	font-weight: bold;
+}
+
+input {
+	all: unset;
+}
+
+.DeckDummyName {
+	margin-left: 2rem;
+	margin: 1.5rem 0rem 1.5rem 2rem;
+	color: var(--font-color);
+	font-family: var(--font-title);
+	/* font-weight: bold; */
+}
+
+button {
+	all: unset;
+}
+
+.DeckCreation {
+	cursor: pointer;
+	margin-top: 1.5rem;
+	padding: 0.5rem 1.2rem;
+	color: var(--font-color-white-1);
+	background: var(--font-color-dark);
+	border-radius: var(--border-radius-default);
+	font-family: var(--font);
+	font-weight: bold;
+	transition: padding 300ms ease-out;
+}
+
+.DeckCreation:hover {
+	padding: 0.5rem 1.8rem;
+}
+
+.DecksIcon {
+	height: 4rem;
+	margin-bottom: 2rem;
 }
