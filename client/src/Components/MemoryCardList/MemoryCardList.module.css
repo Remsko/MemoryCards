@@ -1,0 +1,103 @@
+.CardsContainer {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-left: -2rem;
+	height: 40.5rem;
+	width: 26rem;
+	overflow: auto;
+	/* animation-name: fadeIn;
+	animation-duration: 0.75s;
+	animation-timing-function: ease-in-out;
+	transition: margin ease 300ms; */
+}
+
+.CardsBackground {
+	z-index: -1;
+	position: fixed;
+	margin-top: 1.75rem;
+
+	background: var(--main-dark-color);
+	box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+
+	/* border: 1px solid rgba(80, 69, 138, 0.16); */
+
+	border-radius: 5px;
+	height: 37rem;
+	width: 24rem;
+	max-height: 97vh;
+	opacity: 1;
+	/* animation-name: fadeIn;
+	animation-duration: 0.75s;
+	animation-timing-function: ease-in-out;
+	transition: all 200ms ease-in; */
+}
+/* 
+@keyframes fadeIn {
+	0% {
+		margin-top: 18rem;
+		margin-left: 0;
+		opacity: 0;
+		width: 0;
+		height: 0;
+	}
+	40% {
+		width: 20rem;
+		opacity: 0;
+		height: 0;
+	}
+} */
+
+.CardCreation {
+	position: relative;
+	top: 23rem;
+	left: -15.25rem;
+	cursor: pointer;
+	margin: 1rem;
+	padding: 0.6rem 1rem;
+	color: var(--font-color);
+	border-radius: 20px;
+	font-family: var(--font-title);
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+	background: var(--main-light-color);
+	/* transition: all 200ms ease-out; */
+}
+
+.CardCreation:hover {
+	background: var(--main-light-color);
+}
+
+.IconContainer {
+	position: relative;
+	top: 18rem;
+	right: 5.5rem;
+}
+
+.AddIcon {
+	width: 2.5rem;
+	height: 2.5rem;
+	/* transition: scale 200ms ease-out;
+	animation-name: wait;
+	animation-duration: 1.5s; */
+}
+
+.AddIcon:hover {
+	scale: 1.1;
+	cursor: pointer;
+}
+
+/* @keyframes wait {
+	0% {
+		width: 0;
+		height: 0;
+		opacity: 0;
+	}
+	50% {
+		width: 0;
+		height: 0;
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+} */

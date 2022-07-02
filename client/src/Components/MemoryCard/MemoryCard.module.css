@@ -1,0 +1,93 @@
+.Card {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 0.6rem 3.5rem;
+	margin-top: 0.8rem;
+	background: var(--main-color);
+	border-radius: 8px;
+	box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+	border: 1px solid var(--main-border-color);
+	/* animation-name: landCard;
+	animation-duration: 1.5s;
+	animation-timing-function: ease-in-out; */
+	/* transition: all 200ms ease-in; */
+}
+
+.Card:first-of-type {
+	margin-top: 0;
+}
+
+.Card input {
+	cursor: pointer;
+	text-align: center;
+}
+
+.Dummy {
+	animation-name: none;
+}
+
+/* @keyframes landCard {
+	0% {
+		opacity: 0;
+	}
+	50% {
+		opacity: 0;
+	}
+	90% {
+		margin-top: 0.2rem;
+	}
+} */
+
+.CardSide:first-of-type {
+	font-family: var(--font-title);
+	font-weight: normal;
+	color: var(--font-color);
+}
+
+.CardSide {
+	font-family: var(--font);
+	font-weight: lighter;
+	color: var(--font-color);
+}
+
+.Card:hover {
+	background: var(--main-light-color);
+}
+
+.Divider {
+	position: relative;
+	margin: 0.5rem 0;
+}
+
+.Cross {
+	position: absolute;
+	right: 0.5rem;
+	top: 0.5rem;
+	width: 1rem;
+	height: 1rem;
+	opacity: 0.2;
+}
+
+.Cross:hover {
+	opacity: 1;
+}
+
+.Cross:before,
+.Cross:after {
+	position: absolute;
+	left: 0.5rem;
+	content: ' ';
+	height: 1rem;
+	width: 1px;
+	background-color: var(--font-color);
+}
+
+.Cross:before {
+	transform: rotate(45deg);
+}
+
+.Cross:after {
+	transform: rotate(-45deg);
+}

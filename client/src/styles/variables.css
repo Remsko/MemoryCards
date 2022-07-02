@@ -1,17 +1,29 @@
 @import url('https://fonts.googleapis.com/css?family=Nunito:400,700|Roboto:400,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
 
 :root {
-	--font: 'Roboto', sans-serif;
-	--font-title: 'Nunito', sans-serif;
+	--font: 'Roboto';
+	--font-title: 'Nunito';
 
 	--font-color: #3d3a41;
 	--font-color-disabled: #aa5f6e;
 	--font-color-white-1: #ffe4d6;
+	/* --font-color-white-1: rgba(255, 228, 214, 0.62); */
 	--font-color-white-2: #ffdac7;
 	--font-color-white-3: #f2c0a7;
-	--font-color-light: #ffad99;
-	--font-color-dark: #716c89;
+	/* --font-color-light: #ffad99; */
+	--font-color-light: #ff704d;
+	/* --font-color-dark: #716c89; */
+	--font-color-dark: #50458a;
 
 	--border-radius-default: 5px;
 	--border-size: 1px;
+
+	--main-color: rgba(255, 218, 199, 0.7);
+	--main-light-color: rgba(255, 228, 214, 0.6);
+
+	--main-border-color: rgba(242, 192, 167, 0.5);
+	--main-border-light-color: rgba(242, 192, 167, 0.2);
+
+	--main-dark-color: rgba(80, 69, 138, 0.15);
 }

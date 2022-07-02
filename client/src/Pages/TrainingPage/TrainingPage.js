@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 
-import Card from '../../Components/Card';
+import Card from '../../Components/MemoryCard';
 
 import styles from './TrainingPage.module.css';
 import template from '../../styles/template.module.css';
@@ -28,15 +28,31 @@ const TrainingPage = () => {
 
 	const actualCard = () => {
 		if (cards.length) {
-			return <Card show={show} {...cards[index]} />;
+			const card = cards[index];
+
+			return (
+				<div className={styles.Card}>
+					<div className={styles.Front}>
+						{card.front}
+					</div>
+					<div className={styles.Divider}></div>
+					<div
+						onClick={() => setShow(true)}
+						className={
+							show
+								? styles.Back
+								: styles.BackHidden
+						}
+					>
+						{card.back}
+					</div>
+				</div>
+			);
 		}
 	};
 
-	const flip = () => {
-		setShow(true);
-	};
-
 	const next = () => {
+		setAnswer('');
 		setShow(false);
 		if (index + 1 < cards.length) {
 			setIndex(index + 1);
@@ -52,12 +68,12 @@ const TrainingPage = () => {
 
 	const testAnswer = () => {
 		const card = cards[index];
-		if (answer === card.front) {
+		if (answer === card.back) {
 			alert('RIGHT');
 		} else {
 			alert('WRONG');
-			flip();
 		}
+		setShow(true);
 	};
 
 	const validateAnswer = (e) => {
@@ -71,19 +87,31 @@ const TrainingPage = () => {
 	};
 
 	return (
-		<div className={template.center}>
-			<div className={styles.Training}>
-				{actualCard()}
+		<div className={styles.Training}>
+			{actualCard()}
+			<div className={styles.Dashboard}>
 				<input
+					autoFocus
 					type="text"
 					name="answer"
 					value={answer}
 					onChange={handleAnswerChange}
 					onKeyPress={validateAnswer}
 				/>
-				<button onClick={testAnswer}>Valid</button>
-				<button onClick={flip}>Show</button>
-				<button onClick={next}>Next</button>
+				<div className={styles.Buttons}>
+					<button onClick={testAnswer}>
+						Valid
+					</button>
+					<button
+						onClick={() => {
+							console.log('triggered');
+							setShow(true);
+						}}
+					>
+						Show
+					</button>
+					<button onClick={next}>Next</button>
+				</div>
 			</div>
 		</div>
 	);

@@ -7,17 +7,23 @@ import Modal from '../Modal';
 import styles from './Deck.module.css';
 // import addIconLight from '../../icons/add-card-icon-light.png';
 // import addIconDark from '../../icons/add-card-icon-dark.png';
-import addIcon from '../../icons/add-0.png';
+import addIcon from '../../icons/archive(1).png';
 
-const Deck = ({ deckname, deckId, onDelete }) => {
+const Deck = ({
+	className,
+	deckname,
+	deckId,
+	onDelete,
+	onShowCards,
+}) => {
 	const [showModal, setShowModal] = useState(false);
 	// const [isHover, setIsHover] = useState(false);
 
-	const handleShowModal = () => setShowModal(true);
-	const handleCloseModal = () => setShowModal(false);
+	// const handleShowModal = () => setShowModal(true);
+	// const handleCloseModal = () => setShowModal(false);
 
 	return (
-		<div className={styles.Deck}>
+		<div className={styles.Deck + ' ' + className}>
 			<Link
 				className={styles.DeckLink}
 				to={'/training/' + deckId}
@@ -32,16 +38,18 @@ const Deck = ({ deckname, deckId, onDelete }) => {
 					alt="Add Card"
 					src={addIcon}
 					className={styles.AddIcon}
-					onClick={handleShowModal}
+					onClick={onShowCards}
 				/>
 			</div>
-			<div onClick={() => onDelete(deckId)}></div>
-			<Modal
+			<button onClick={() => onDelete(deckId)}>
+				{/* delete */}
+			</button>
+			{/* <Modal
 				show={showModal}
 				onHide={handleCloseModal}
 			>
 				<CardForm deckId={deckId} />
-			</Modal>
+			</Modal> */}
 		</div>
 	);
 };

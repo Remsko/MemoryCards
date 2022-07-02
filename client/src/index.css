@@ -1,11 +1,18 @@
 @import './styles/variables.css';
 
+input {
+	all: unset;
+}
+
+button {
+	all: unset;
+}
+
 * {
 	margin: 0;
 	padding: 0;
 	text-decoration: none;
 	box-sizing: border-box;
-	font-family: var(--font);
 }
 
 #root {
@@ -13,7 +20,7 @@
 }
 
 body {
-	min-height: 100vh;
+	max-height: 100vh;
 	background: linear-gradient(
 		120deg,
 		var(--font-color-light),
