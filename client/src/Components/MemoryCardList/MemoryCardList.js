@@ -1,15 +1,18 @@
 import axios from 'axios';
 import { useState, useEffect, useRef } from 'react';
+import { useParams } from 'react-router-dom';
 
 import MemoryCard from '../MemoryCard';
 import styles from './MemoryCardList.module.css';
 import stylesCard from '../MemoryCard/MemoryCard.module.css';
+import stylesDeck from '../DeckList/DeckList.module.css';
 
-import cardIcon from '../../icons/quill(4).png';
+// import cardIcon from '../../icons/quill(4).png';
 
-const MemoryCardList = ({ deckId }) => {
+const MemoryCardList = () => {
+	const { deckId } = useParams();
+
 	const [cards, setCards] = useState(null);
-	const [isCreating, setIsCreating] = useState(false);
 
 	const scrollDownRef = useRef(null);
 
@@ -32,10 +35,10 @@ const MemoryCardList = ({ deckId }) => {
 			block: 'end',
 			inline: 'nearest',
 		});
-	}, [isCreating]);
+	}, [cards]);
 
 	const loseCreationFocus = () => {
-		setIsCreating(false);
+		// setIsCreating(false);
 		setFront('');
 		setBack('');
 	};
@@ -75,8 +78,12 @@ const MemoryCardList = ({ deckId }) => {
 	};
 
 	return (
-		<>
-			<div className={styles.CardsContainer}>
+		<div className={stylesDeck.DeckList}>
+			<div className={stylesDeck.DeckTitle}>
+				[{cards?.length}] card
+				{cards?.length ? 's' : ''}
+			</div>
+			<div className={styles.CardListContainer}>
 				{cards?.map(({ card_id, ...card }) => (
 					<MemoryCard
 						onDelete={deleteCard}
@@ -85,7 +92,7 @@ const MemoryCardList = ({ deckId }) => {
 						{...card}
 					/>
 				))}
-				{isCreating && (
+				{
 					<div
 						className={
 							stylesCard.Card +
@@ -100,11 +107,11 @@ const MemoryCardList = ({ deckId }) => {
 							onChange={(e) =>
 								setFront(e.target.value)
 							}
-							placeholder="Front"
+							placeholder="Front 앞"
 							className={stylesCard.CardSide}
 							size={
 								front.length ||
-								'Front'.length
+								'Front 앞'.length
 							}
 							onBlur={() => {
 								if (!front.length) {
@@ -122,29 +129,38 @@ const MemoryCardList = ({ deckId }) => {
 							onChange={(e) =>
 								setBack(e.target.value)
 							}
-							placeholder="Back"
+							placeholder="Back 뒤"
 							className={stylesCard.CardSide}
 							size={
-								back.length || 'Back'.length
+								back.length ||
+								'Back 뒤'.length
 							}
 							onBlur={loseCreationFocus}
 							onKeyDown={handleKey}
 						/>
 					</div>
-				)}
-				<div className={styles.CardsBackground} />
+				}
 				<div ref={scrollDownRef} />
-			</div>
-			<div className={styles.IconContainer}>
-				<img
+				{/* <div className={styles.IconContainer}>
+					<img
+					alt="Create a memory card !"
 					src={cardIcon}
 					className={styles.AddIcon}
 					onClick={() => {
 						setIsCreating(true);
 					}}
-				/>
+					/>
+				</div> */}
 			</div>
-		</>
+			{/* <button
+				className={stylesDeck.DeckCreationButton}
+				onClick={() => {
+					setIsCreating(true);
+				}}
+			>
+				+
+			</button> */}
+		</div>
 	);
 };
 

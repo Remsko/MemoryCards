@@ -1,54 +1,61 @@
-const DeckList = () => {
-	return (
-		<div className={styles.BottomButton}>
-			<div className={styles.DecksContainer}>
-				<div className={styles.DeckList}>
-					{decks?.map(({ deckname, deck_id }) => (
-						<div
-							onClick={() => {
-								setDeckId(deck_id);
-								setShowCards(true);
-							}}
-						>
-							<Deck
-								className={
-									showCards &&
-									deck_id === deckId
-										? styles.Active
-										: ''
-								}
-								key={deck_id}
-								deckname={deckname}
-								deckId={deck_id}
-								onDelete={deleteDeck}
-							/>
-						</div>
-					))}
-					{isCreating && (
-						<div className={styles.DeckDummy}>
-							<input
-								autoFocus
-								className={
-									styles.DeckDummyName
-								}
-								type="text"
-								onKeyDown={handleKey}
-								onChange={handleChange}
-								onBlur={handleBlur}
-								value={newDeck}
-							/>
-						</div>
-					)}
-					<div ref={scrollDownRef} />
-				</div>
-			</div>
+import { useRef, useEffect, useState } from 'react';
 
-			<button
-				className={styles.DeckCreation}
-				onClick={() => setIsCreating(true)}
-			>
-				+
-			</button>
+import Deck, { DeckInput } from '../Deck';
+
+import styles from './DeckList.module.css';
+
+const DeckList = ({ decks, onCreate, onDelete }) => {
+	const [deckname, setDeckname] = useState('');
+	const scrollDownRef = useRef(null);
+
+	useEffect(() => {
+		scrollDownRef.current.scrollIntoView({
+			behavior: 'smooth',
+			block: 'end',
+			inline: 'nearest',
+		});
+	}, [decks]);
+
+	const stopCreation = () => {
+		setDeckname('');
+	};
+
+	const handleKeyDown = (e) => {
+		if (e.key === 'Escape') {
+			stopCreation();
+		}
+		if (e.key === 'Enter' || e.keyCode === 13) {
+			onCreate(deckname);
+			stopCreation();
+		}
+	};
+
+	const handleChange = (e) => {
+		setDeckname(e.target.value);
+	};
+
+	return (
+		<div className={styles.DeckList}>
+			<div className={styles.DeckTitle}>
+				{'Decks {...}'}
+			</div>
+			<div className={styles.DeckListContainer}>
+				{decks?.map(({ deckname, deck_id }) => (
+					<Deck
+						key={deck_id}
+						deckname={deckname}
+						deckId={deck_id}
+						onDelete={onDelete}
+					/>
+				))}
+				<DeckInput
+					value={deckname}
+					onChange={handleChange}
+					onKeyDown={handleKeyDown}
+					onBlur={stopCreation}
+				/>
+				<div ref={scrollDownRef} />
+			</div>
 		</div>
 	);
 };

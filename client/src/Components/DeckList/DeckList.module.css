@@ -1,0 +1,46 @@
+.DeckList {
+	display: flex;
+	flex-direction: column;
+	/* align-items: center; */
+}
+
+.DeckListContainer {
+	/* margin: 2rem;
+	margin-right: 0; */
+	/* border-radius: 5px; */
+	/* border: 1px solid var(--main-border-color); */
+	/* border: 1px solid rgba(80, 69, 138, 0.16); */
+	/* box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); */
+	/* max-height: 39vh; */
+	width: 28rem;
+	max-height: 40.5rem;
+	overflow: auto;
+}
+
+.DeckTitle {
+	/* margin-left: 3rem; */
+	/* position: fixed; */
+	/* margin-top: 0.5rem;
+	margin-right: 20rem; */
+	/* transform: translate(-10rem, -2rem); */
+	margin: 0.5rem;
+	color: var(--main-light-color);
+	font-family: var(--font-title);
+	font-weight: bold;
+	font-size: small;
+}
+
+/* .DeckCreationButton {
+	cursor: pointer;
+	padding: 0.6rem 1rem;
+	border-radius: 20px;
+	font-family: var(--font-title);
+	color: var(--main-light-color);
+	background: rgb(35, 25, 35, 15%);
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.DeckCreationButton:hover {
+	color: var(--font-color);
+	background: var(--main-light-color);
+} */

@@ -49,7 +49,7 @@ const MemoryCard = ({
 		// 	return isFront ? size * 1.25 : size;
 		// }
 
-		return (isFront ? 'Front' : 'Back').length;
+		return (isFront ? 'Front 앞' : 'Back 뒤').length;
 	};
 
 	const renderSide = (isFront) => {
@@ -78,7 +78,9 @@ const MemoryCard = ({
 						? setUpdateFront(e.target.value)
 						: setUpdateBack(e.target.value);
 				}}
-				placeholder={isFront ? 'Front' : 'Back'}
+				placeholder={
+					isFront ? 'Front 앞' : 'Back 뒤'
+				}
 				className={styles.CardSide}
 				size={getFieldSize(isFront)}
 				onBlur={loseUpdateFocus}

@@ -2,10 +2,10 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 
-import Card from '../../Components/MemoryCard';
+// import Card from '../../Components/MemoryCard';
 
 import styles from './TrainingPage.module.css';
-import template from '../../styles/template.module.css';
+// import template from '../../styles/template.module.css';
 
 const TrainingPage = () => {
 	const { id } = useParams();
@@ -13,6 +13,9 @@ const TrainingPage = () => {
 	const [index, setIndex] = useState(0);
 	const [show, setShow] = useState(false);
 	const [answer, setAnswer] = useState('');
+	const [inputBackground, setInputBackground] = useState(
+		{}
+	);
 
 	console.log('RENDER');
 
@@ -54,6 +57,7 @@ const TrainingPage = () => {
 	const next = () => {
 		setAnswer('');
 		setShow(false);
+		setInputBackground({});
 		if (index + 1 < cards.length) {
 			setIndex(index + 1);
 		} else {
@@ -69,9 +73,19 @@ const TrainingPage = () => {
 	const testAnswer = () => {
 		const card = cards[index];
 		if (answer === card.back) {
-			alert('RIGHT');
+			setInputBackground({
+				// 'background-color': '#CAC468',
+				// 'border-color': '#474347',
+				'background-color': '#474347',
+				'border-color': '#CAC468',
+			});
 		} else {
-			alert('WRONG');
+			setInputBackground({
+				// 'background-color': '#AB3E53',
+				// 'border-color': '#542C35',
+				'background-color': '#542C35',
+				'border-color': '#AB3E53',
+			});
 		}
 		setShow(true);
 	};
@@ -88,6 +102,9 @@ const TrainingPage = () => {
 
 	return (
 		<div className={styles.Training}>
+			<div className={styles.Title}>
+				Card {index + 1}/{cards.length}
+			</div>
 			{actualCard()}
 			<div className={styles.Dashboard}>
 				<input
@@ -97,6 +114,8 @@ const TrainingPage = () => {
 					value={answer}
 					onChange={handleAnswerChange}
 					onKeyPress={validateAnswer}
+					className={styles.DashboardInput}
+					style={inputBackground}
 				/>
 				<div className={styles.Buttons}>
 					<button onClick={testAnswer}>

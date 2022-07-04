@@ -1,35 +1,27 @@
 @import '../../styles/variables.css';
 
-.Deck {
-	position: relative;
-	overflow: hidden;
+.Deck,
+.DeckActive {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	/* transition: background-color 0.3s; */
+	background: rgb(35, 25, 35, 15%);
+	color: var(--main-light-color);
 }
 
-.Deck:hover {
+.Deck:hover,
+.DeckActive {
 	background: var(--main-light-color);
-}
-
-/* .Deck:hover .DeckName {
-	font-weight: bold;
-} */
-
-.DeckLink {
-	width: 75%;
+	color: var(--font-color);
 }
 
 .DeckName {
-	margin-left: 2rem;
-	margin: 1.5rem 0rem 1.5rem 2rem;
-	color: var(--font-color);
+	margin: 1.5rem 2rem;
+	/* color: var(--font-color); */
 	font-family: var(--font-title);
-	/* font-weight: bold; */
 }
 
-.IconContainer {
+/* .IconContainer {
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -37,10 +29,9 @@
 
 .AddIcon {
 	height: 1.8rem;
-	/* transition: height 200ms ease-out; */
 }
 
 .AddIcon:hover {
 	height: 2rem;
 	cursor: pointer;
-}
+} */

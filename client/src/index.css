@@ -22,8 +22,14 @@ button {
 body {
 	max-height: 100vh;
 	background: linear-gradient(
-		120deg,
-		var(--font-color-light),
-		var(--font-color-dark)
-	);
+			120deg,
+			#ff704dbb,
+			#50458abb
+		),
+		url('./styles/index.png') center/cover no-repeat
+			border-box;
+}
+
+*::placeholder {
+	opacity: 0.4;
 }
