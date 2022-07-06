@@ -40,12 +40,12 @@ const DeckList = ({ decks, onCreate, onDelete }) => {
 				{'Decks {...}'}
 			</div>
 			<div className={styles.DeckListContainer}>
-				{decks?.map(({ deckname, deck_id }) => (
+				{decks?.map(({ deck_id, ...deck }) => (
 					<Deck
 						key={deck_id}
-						deckname={deckname}
 						deckId={deck_id}
 						onDelete={onDelete}
+						{...deck}
 					/>
 				))}
 				<DeckInput

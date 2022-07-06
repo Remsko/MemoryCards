@@ -1,7 +1,7 @@
 @import '../../styles/variables.css';
 
 .DeckPage {
-	padding-top: 6rem;
+	padding: calc((100vh - (40.5rem + 4rem)) / 2) 0;
 	display: flex;
 	justify-content: center;
 	/* align-items: center;  */

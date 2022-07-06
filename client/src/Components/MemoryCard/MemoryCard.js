@@ -1,109 +1,92 @@
-import { useState } from 'react';
-import axios from 'axios';
+import { useState, useEffect, useRef } from 'react';
 
 import styles from './MemoryCard.module.css';
 
 const MemoryCard = ({
 	cardId,
+	front,
+	back,
 	onDelete,
-	show = true,
-	...props
+	onUpdate,
+	onCreate,
 }) => {
-	const [front, setFront] = useState(props.front);
-	const [back, setBack] = useState(props.back);
-	const [isUpdating, setIsUpdating] = useState(false);
-	const [updateFront, setUpdateFront] = useState(front);
-	const [updateBack, setUpdateBack] = useState(back);
+	const autoFocusRef = useRef(null);
+	const [card, setCard] = useState({ front, back });
 
-	const updateCard = async () => {
-		const { data } = await axios.patch(
-			'http://localhost:5000/cards',
-			{ front: updateFront, back: updateBack, cardId }
-		);
-		setFront(data.card.front);
-		setBack(data.card.back);
-		setUpdateFront(data.card.front);
-		setUpdateBack(data.card.back);
-	};
-
-	const loseUpdateFocus = () => {
-		setUpdateFront(front);
-		setUpdateBack(back);
-		setIsUpdating(false);
-	};
-
-	const handleKey = (e) => {
-		if (e.key === 'Escape') {
-			loseUpdateFocus();
+	useEffect(() => {
+		if (typeof onCreate === 'function') {
+			autoFocusRef.current.focus();
 		}
+	}, [onCreate]);
+
+	const handleFocus = ({ currentTarget }) => {
+		currentTarget.setSelectionRange(
+			currentTarget.value.length,
+			currentTarget.value.length
+		);
+	};
+
+	const handleKeyDown = (e) => {
 		if (e.key === 'Enter' || e.keyCode === 13) {
-			updateCard();
-			setIsUpdating(false);
+			if (typeof onUpdate === 'function') {
+				onUpdate({ ...card, cardId });
+			} else if (typeof onCreate === 'function') {
+				onCreate(card);
+				setCard({ front: '', back: '' });
+			}
 		}
 	};
 
-	const getFieldSize = (isFront) => {
-		// const size = isFront ? front.length : back.length;
-
-		// if (size) {
-		// 	return isFront ? size * 1.25 : size;
-		// }
-
-		return (isFront ? 'Front 앞' : 'Back 뒤').length;
-	};
-
-	const renderSide = (isFront) => {
-		if (!isUpdating) {
-			return (
-				<span
-					onClick={() => {
-						setIsUpdating(true);
-					}}
-					className={styles.CardSide}
-					size={
-						isFront ? front.length : back.length
-					}
-				>
-					{isFront ? front : back}
-				</span>
-			);
+	const handleBlur = () => {
+		if (typeof onUpdate === 'function') {
+			setCard({ front, back });
 		}
-
-		return (
-			<input
-				type="text"
-				value={isFront ? updateFront : updateBack}
-				onChange={(e) => {
-					isFront
-						? setUpdateFront(e.target.value)
-						: setUpdateBack(e.target.value);
-				}}
-				placeholder={
-					isFront ? 'Front 앞' : 'Back 뒤'
-				}
-				className={styles.CardSide}
-				size={getFieldSize(isFront)}
-				onBlur={loseUpdateFocus}
-				onKeyDown={handleKey}
-				onFocus={(e) =>
-					e.currentTarget.setSelectionRange(
-						e.currentTarget.value.length,
-						e.currentTarget.value.length
-					)
-				}
-			/>
-		);
 	};
 
 	return (
 		<div className={styles.Card}>
-			<div
-				className={styles.Cross}
-				onClick={() => onDelete(cardId)}
+			<input
+				ref={autoFocusRef}
+				type="text"
+				placeholder={'Front 앞'}
+				value={card.front}
+				size={
+					card.front.length || 'Front 앞'.length
+				}
+				onChange={({ target }) => {
+					setCard({
+						...card,
+						front: target.value,
+					});
+				}}
+				onFocus={handleFocus}
+				onKeyDown={handleKeyDown}
+				onBlur={handleBlur}
+				className={styles.CardSide}
 			/>
-			{renderSide(true)}
 			<div className={styles.Divider} />
-			{show && renderSide(false)}
+			<input
+				type="text"
+				placeholder={'Back 뒤'}
+				value={card.back}
+				size={card.back.length || 'Back 뒤'.length}
+				onChange={({ target }) => {
+					setCard({
+						...card,
+						back: target.value,
+					});
+				}}
+				onFocus={handleFocus}
+				onKeyDown={handleKeyDown}
+				onBlur={handleBlur}
+				className={styles.CardSide}
+			/>
+			{onDelete && (
+				<div
+					className={styles.Cross}
+					onClick={() => onDelete(cardId)}
+				/>
+			)}
 		</div>
 	);
 };

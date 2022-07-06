@@ -1,3 +1,22 @@
+.CardList {
+	display: flex;
+	flex-direction: column;
+	/* align-items: center; */
+}
+
+.CardTitle {
+	/* margin-left: 3rem; */
+	/* position: fixed; */
+	/* margin-top: 0.5rem;
+	margin-right: 20rem; */
+	/* transform: translate(-10rem, -2rem); */
+	margin: 0.5rem;
+	color: var(--main-light-color);
+	font-family: var(--font-title);
+	font-weight: bold;
+	font-size: small;
+}
+
 .CardListContainer {
 	/* margin: 2rem; */
 	margin-left: 0;
@@ -13,83 +32,3 @@
 	/* border: 1px solid rgba(80, 69, 138, 0.16); */
 	/* border-radius: 5px; */
 }
-
-.CardsTitle {
-	position: fixed;
-	/* margin-top: 0.5rem;
-	margin-right: 20rem; */
-	transform: translate(-10rem, -2rem);
-	color: var(--main-light-color);
-	font-family: var(--font-title);
-	font-weight: normal;
-	/*font-size: x-small; */
-}
-
-/* 
-@keyframes fadeIn {
-	0% {
-		margin-top: 18rem;
-		margin-left: 0;
-		opacity: 0;
-		width: 0;
-		height: 0;
-	}
-	40% {
-		width: 20rem;
-		opacity: 0;
-		height: 0;
-	}
-} */
-
-/* .CardCreation {
-	position: relative;
-	top: 23rem;
-	left: -15.25rem;
-	cursor: pointer;
-	margin: 1rem;
-	padding: 0.6rem 1rem;
-	color: var(--font-color);
-	border-radius: 20px;
-	font-family: var(--font-title);
-	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-	background: var(--main-light-color);
-} */
-
-.CardCreation:hover {
-	background: var(--main-light-color);
-}
-
-.IconContainer {
-	position: relative;
-	top: 18rem;
-	right: 5.5rem;
-}
-
-.AddIcon {
-	width: 2.5rem;
-	height: 2.5rem;
-	/* transition: scale 200ms ease-out;
-	animation-name: wait;
-	animation-duration: 1.5s; */
-}
-
-.AddIcon:hover {
-	scale: 1.1;
-	cursor: pointer;
-}
-
-/* @keyframes wait {
-	0% {
-		width: 0;
-		height: 0;
-		opacity: 0;
-	}
-	50% {
-		width: 0;
-		height: 0;
-		opacity: 0;
-	}
-	100% {
-		opacity: 1;
-	}
-} */

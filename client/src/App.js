@@ -4,18 +4,18 @@ import {
 	Route,
 } from 'react-router-dom';
 
-import MemoryCardList from './Components/MemoryCardList';
 import DeckPage from './Pages/DeckPage';
 import TrainingPage from './Pages/TrainingPage';
+import MemoryCardPage from './Pages/MemoryCardPage/MemoryCardPage';
 
 const App = () => {
 	return (
 		<BrowserRouter>
 			<Routes>
-				<Route path="decks" element={<DeckPage />}>
+				<Route path="/decks" element={<DeckPage />}>
 					<Route
 						path=":deckId"
-						element={<MemoryCardList />}
+						element={<MemoryCardPage />}
 					/>
 				</Route>
 				<Route

@@ -16,66 +16,43 @@
 	animation-timing-function: ease-in-out; */
 	/* transition: all 200ms ease-in; */
 }
-/* 
-.Card:first-of-type {
-	margin-bottom: 20px;
-} */
-
-.Card input {
-	cursor: pointer;
-	text-align: center;
-}
-
-.Dummy {
-	animation-name: none;
-}
-
-/* @keyframes landCard {
-	0% {
-		opacity: 0;
-	}
-	50% {
-		opacity: 0;
-	}
-	90% {
-		margin-top: 0.2rem;
-	}
-} */
-
-.CardSide:first-of-type {
-	/* user-select: none;
-	cursor: auto; */
-	font-family: var(--font-title);
-	font-weight: normal;
-	color: var(--font-color);
-}
-
-.CardSide {
-	font-family: var(--font);
-	font-weight: lighter;
-	color: var(--font-color);
-}
 
 .Card:hover {
 	background: var(--main-light-color);
 }
 
+.CardSide {
+	cursor: pointer;
+	text-align: center;
+	width: 70%;
+	font-family: var(--font);
+	font-weight: lighter;
+	color: var(--font-color);
+	font-size: 1.1rem;
+}
+
+.CardSide:first-of-type {
+	font-family: var(--font-title);
+	font-weight: normal;
+	color: var(--font-color);
+}
+
 .Divider {
-	position: relative;
-	margin: 0.33rem 0;
+	margin-bottom: 0.2rem;
 }
 
 .Cross {
+	cursor: pointer;
 	position: absolute;
-	right: 1.2rem;
-	top: 1.2rem;
+	right: 0.75rem;
+	top: 1rem;
 	width: 1rem;
 	height: 1rem;
-	opacity: 0.2;
 }
 
-.Cross:hover {
-	opacity: 1;
+.Cross:hover::after,
+.Cross:hover::before {
+	background-color: var(--font-color);
 }
 
 .Cross:before,
@@ -83,8 +60,9 @@
 	position: absolute;
 	left: 0.5rem;
 	content: ' ';
-	height: 1rem;
+	height: 0.6rem;
 	width: 1px;
+	background-color: var(--font-color-disabled);
 	background-color: var(--font-color);
 }
 

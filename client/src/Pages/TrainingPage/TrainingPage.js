@@ -117,21 +117,19 @@ const TrainingPage = () => {
 					className={styles.DashboardInput}
 					style={inputBackground}
 				/>
-				<div className={styles.Buttons}>
-					<button onClick={testAnswer}>
-						Valid
-					</button>
-					<button
-						onClick={() => {
-							console.log('triggered');
-							setShow(true);
-						}}
-					>
-						Show
-					</button>
-					<button onClick={next}>Next</button>
-				</div>
 			</div>
+			{/* <div className={styles.Buttons}>
+				<button onClick={testAnswer}>Valid</button>
+				<button
+					onClick={() => {
+						console.log('triggered');
+						setShow(true);
+					}}
+				>
+					Show
+				</button>
+				<button onClick={next}>Next</button>
+			</div> */}
 		</div>
 	);
 };
